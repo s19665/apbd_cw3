@@ -9,5 +9,6 @@ namespace FirstApi.DAL
     public interface IDbService
     {
         public IEnumerable<Student> GetStudents();
+        public Student GetStudentById(string id);
     }
 }

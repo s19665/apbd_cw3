@@ -13,11 +13,17 @@ namespace FirstApi.DAL
         {
             _students = new List<Student>
             {
-                new Student{IdStudent=1, FirstName="Jan", LastName="Kowalski"},
-                new Student{IdStudent=2, FirstName="Anna", LastName="Malewski"},
-                new Student{IdStudent=3, FirstName="Andrzej", LastName="Andrzejewicz"}
+                new Student{IdStudent="s1", FirstName="Jan", LastName="Kowalski"},
+                new Student{IdStudent="s2", FirstName="Anna", LastName="Malewski"},
+                new Student{IdStudent="s3", FirstName="Andrzej", LastName="Andrzejewicz"}
             };
         }
+
+        public Student GetStudentById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Student> GetStudents()
         {
             return _students;

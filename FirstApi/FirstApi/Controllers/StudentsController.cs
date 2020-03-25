@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FirstApi.DAL;
 using FirstApi.Modeles;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlClient;
 
 namespace FirstApi.Controllers
 {
@@ -13,26 +14,23 @@ namespace FirstApi.Controllers
     public class StudentsController : ControllerBase
     {
         private readonly IDbService _dbService;
+        private const string ConString = "Data Source=db-mssql;Initial Catalog=s19665;Integrated Security=True";
         public StudentsController(IDbService dbService)
         {
             _dbService = dbService;
         }
         [HttpGet]
-        public IActionResult GetStudent(string orderBy)
+        public IActionResult GetStudent()
         {
             return Ok(_dbService.GetStudents());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetStudent(int id)
+        public IActionResult GetStudent(string id)
         {
-            if (id == 1)
-            {
-                return Ok("Kowalski");
-            }else if (id == 2)
-            {
-                return Ok("Malewski");
-            }
+            var student = _dbService.GetStudentById(id);
+            if (student != null)
+                return Ok(student);
             return NotFound("Nie znaleziono studenta");
         }
 
