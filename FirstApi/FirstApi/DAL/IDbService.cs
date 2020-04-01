@@ -1,4 +1,6 @@
-﻿using FirstApi.Modeles;
+﻿using FirstApi.DTOs.Requests;
+using FirstApi.DTOs.Response;
+using FirstApi.Modeles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,6 @@ namespace FirstApi.DAL
     {
         public IEnumerable<Student> GetStudents();
         public Student GetStudentById(string id);
+        public EnrollStudentResponse EnrollStudent(EnrollStudentRequest student);
     }
 }
