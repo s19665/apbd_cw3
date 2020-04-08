@@ -13,5 +13,6 @@ namespace FirstApi.DAL
         public IEnumerable<Student> GetStudents();
         public Student GetStudentById(string id);
         public EnrollStudentResponse EnrollStudent(EnrollStudentRequest student);
+        bool CheckIndex(string index);
     }
 }

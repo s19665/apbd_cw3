@@ -1,0 +1,16 @@
+Loggs:
+GET /api/students  
+GET /api/students {
+	"IndexNumber": "s12345",
+	"FirstName": "Andrzej",
+	"LastName": "Malewski",
+	"BirthDate": "1992-03-30",
+	"Studies": "IT"
+} 
+GET /api/students {
+	"IndexNumber": "s12345",
+	"FirstName": "Andrzej",
+	"LastName": "Malewski",
+	"BirthDate": "1992-03-30",
+	"Studies": "IT"
+} ?name=Kowalski

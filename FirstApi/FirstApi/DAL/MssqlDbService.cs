@@ -160,5 +160,33 @@ namespace FirstApi.DAL
                 throw new Exception("Something went wrong");
             }
         }
+
+        public bool CheckIndex(string index)
+        {
+            var conBulder = new SqlConnectionStringBuilder();
+            conBulder.InitialCatalog = "s19665";
+            string conStr = conBulder.ConnectionString;
+            using (var client = new SqlConnection(ConString))
+            using (var com = new SqlCommand())
+            {
+                com.Connection = client;
+                com.CommandText =
+                    "Select " +
+                    "Count(1) as 'istanieje' " +
+                    "from Student where IndexNumber=@id;";
+                com.Parameters.AddWithValue("id", index);
+                client.Open();
+                var dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    var count = int.Parse(dr["istanieje"].ToString());
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
     }
 }
